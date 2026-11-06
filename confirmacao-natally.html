@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#102b61" />
+  <meta name="description" content="Confirme sua presença no aniversário de 10 anos da Natally!" />
+  <title>Natally 10 anos • Confirme sua presença!</title>
+  <style>
+    :root {
+      --navy: #102653;
+      --deep: #091a3d;
+      --blue: #248ed1;
+      --sky: #77d6f5;
+      --ice: #eafaff;
+      --yellow: #ffe67d;
+      --pink: #ff9bc6;
+      --ink: #17345b;
+      --muted: #64809b;
+      --white: #ffffff;
+      --shadow: 0 24px 70px rgba(2, 16, 49, .28);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      padding: 28px 18px;
+      display: grid;
+      place-items: center;
+      overflow-x: hidden;
+      color: var(--white);
+      font-family: ui-rounded, "Trebuchet MS", "Segoe UI", system-ui, sans-serif;
+      background:
+        radial-gradient(circle at 12% 15%, rgba(105, 218, 255, .20), transparent 22rem),
+        radial-gradient(circle at 88% 82%, rgba(255, 155, 198, .15), transparent 25rem),
+        linear-gradient(135deg, #071735 0%, #123a76 52%, #126d9a 100%);
+    }
+
+    body::before, body::after {
+      content: "";
+      position: fixed;
+      pointer-events: none;
+      z-index: 0;
+      opacity: .5;
+    }
+    body::before {
+      inset: 0;
+      background-image:
+        radial-gradient(2px 2px at 8% 22%, #fff 98%, transparent),
+        radial-gradient(2px 2px at 28% 76%, #fff 98%, transparent),
+        radial-gradient(3px 3px at 73% 14%, #fff 98%, transparent),
+        radial-gradient(2px 2px at 91% 39%, #fff 98%, transparent),
+        radial-gradient(2px 2px at 62% 88%, #fff 98%, transparent),
+        radial-gradient(2px 2px at 43% 9%, #fff 98%, transparent),
+        radial-gradient(3px 3px at 17% 91%, #fff 98%, transparent);
+    }
+    body::after {
+      width: 360px;
+      height: 360px;
+      right: -150px;
+      top: -170px;
+      border: 1px solid rgba(255,255,255,.13);
+      border-radius: 50%;
+      box-shadow: 0 0 0 28px rgba(255,255,255,.025), 0 0 0 58px rgba(255,255,255,.025);
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+      width: min(100%, 1000px);
+    }
+
+    .top-note {
+      margin: 0 auto 13px;
+      width: fit-content;
+      padding: 8px 15px;
+      border: 1px solid rgba(255,255,255,.26);
+      border-radius: 999px;
+      background: rgba(255,255,255,.09);
+      color: #e9faff;
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      backdrop-filter: blur(10px);
+    }
+
+    .invite {
+      display: grid;
+      grid-template-columns: .95fr 1.05fr;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.35);
+      border-radius: 30px;
+      background: rgba(239, 250, 255, .97);
+      box-shadow: var(--shadow);
+    }
+
+    .hero {
+      position: relative;
+      isolation: isolate;
+      min-height: 650px;
+      padding: 42px 38px 34px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      text-align: center;
+      color: white;
+      background:
+        radial-gradient(circle at 50% 36%, rgba(113, 222, 255, .38), transparent 13rem),
+        linear-gradient(160deg, #176db0 0%, #123a79 59%, #0c2451 100%);
+    }
+    .hero::before, .hero::after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      pointer-events: none;
+    }
+    .hero::before {
+      width: 250px;
+      height: 250px;
+      left: -130px;
+      bottom: -125px;
+      border-radius: 50%;
+      background: rgba(111, 219, 247, .12);
+      box-shadow: 0 0 0 25px rgba(111, 219, 247, .05), 0 0 0 55px rgba(111, 219, 247, .04);
+    }
+    .hero::after {
+      width: 150px;
+      height: 150px;
+      top: -72px;
+      right: -70px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.18);
+      box-shadow: 0 0 0 18px rgba(255,255,255,.04), 0 0 0 38px rgba(255,255,255,.03);
+    }
+
+    .hero-kicker {
+      margin: 0;
+      color: #d8f7ff;
+      font-size: .83rem;
+      font-weight: 800;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+    .hero h1 {
+      margin: 8px 0 0;
+      font-size: clamp(3.2rem, 7vw, 5.6rem);
+      line-height: .9;
+      letter-spacing: -.075em;
+      text-shadow: 0 5px 0 rgba(3, 22, 61, .18);
+    }
+    .hero h1 span {
+      display: block;
+      margin-top: 14px;
+      color: var(--yellow);
+      font-size: .44em;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+    .hero-subtitle {
+      max-width: 310px;
+      margin: 17px auto 0;
+      color: #e7f9ff;
+      font-size: 1.04rem;
+      line-height: 1.55;
+    }
+
+    /* Mascote original em CSS: um alienígena azul decorativo, sem imagem externa. */
+    .mascot-wrap {
+      position: relative;
+      width: 245px;
+      height: 230px;
+      margin: 14px auto 8px;
+      display: grid;
+      place-items: center;
+      animation: bob 4s ease-in-out infinite;
+    }
+    .mascot-shadow {
+      position: absolute;
+      bottom: 9px;
+      width: 145px;
+      height: 19px;
+      border-radius: 50%;
+      background: rgba(0, 8, 35, .24);
+      filter: blur(7px);
+    }
+    .ear {
+      position: absolute;
+      top: 50px;
+      width: 91px;
+      height: 116px;
+      background: linear-gradient(145deg, #8eeaff, #319cdb 65%, #176bb4);
+      border: 3px solid rgba(7, 55, 112, .45);
+      border-radius: 85% 15% 75% 25%;
+      box-shadow: inset 9px 5px 0 rgba(255,255,255,.22);
+    }
+    .ear.left { left: 13px; transform: rotate(-35deg); }
+    .ear.right { right: 13px; transform: scaleX(-1) rotate(-35deg); }
+    .ear::after {
+      content: "";
+      position: absolute;
+      inset: 19px 15px 16px 21px;
+      border-radius: 80% 15% 75% 25%;
+      background: linear-gradient(140deg, #ffb1cc, #f17da9);
+      opacity: .9;
+    }
+    .alien-head {
+      position: relative;
+      z-index: 2;
+      width: 170px;
+      height: 157px;
+      margin-top: 28px;
+      border: 3px solid rgba(7, 55, 112, .5);
+      border-radius: 48% 48% 43% 43%;
+      background: linear-gradient(145deg, #a0efff 0%, #55c4ef 37%, #2586ce 78%);
+      box-shadow: inset 10px 8px 0 rgba(255,255,255,.26), 0 12px 25px rgba(0, 15, 49, .18);
+    }
+    .eye {
+      position: absolute;
+      top: 61px;
+      width: 33px;
+      height: 42px;
+      border-radius: 50%;
+      background: #102348;
+      border: 3px solid #e8fcff;
+      box-shadow: inset 5px 4px 0 rgba(255,255,255,.24);
+    }
+    .eye.left { left: 39px; }
+    .eye.right { right: 39px; }
+    .nose {
+      position: absolute;
+      z-index: 3;
+      top: 94px;
+      left: 50%;
+      width: 24px;
+      height: 15px;
+      transform: translateX(-50%);
+      border-radius: 60% 60% 70% 70%;
+      background: #14315d;
+    }
+    .smile {
+      position: absolute;
+      left: 50%;
+      top: 107px;
+      width: 38px;
+      height: 17px;
+      transform: translateX(-50%);
+      border-bottom: 3px solid #14315d;
+      border-radius: 0 0 50% 50%;
+    }
+    .cheek {
+      position: absolute;
+      top: 100px;
+      width: 24px;
+      height: 12px;
+      border-radius: 50%;
+      background: #ff9ac1;
+      opacity: .85;
+    }
+    .cheek.left { left: 16px; }
+    .cheek.right { right: 16px; }
+
+    .ohana {
+      margin: 0;
+      color: var(--yellow);
+      font-size: 1.02rem;
+      font-weight: 900;
+      letter-spacing: .16em;
+    }
+    .hero-foot {
+      margin: 9px 0 0;
+      color: rgba(235, 250, 255, .78);
+      font-size: .79rem;
+    }
+
+    .form-side {
+      padding: 48px clamp(25px, 4vw, 48px) 35px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      color: var(--ink);
+    }
+    .form-label-top {
+      margin: 0 0 9px;
+      color: #1683bd;
+      font-size: .77rem;
+      font-weight: 900;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+    .form-side h2 {
+      margin: 0;
+      color: #12335f;
+      font-size: clamp(2rem, 4vw, 2.65rem);
+      line-height: 1.04;
+      letter-spacing: -.055em;
+    }
+    .intro {
+      margin: 14px 0 28px;
+      color: var(--muted);
+      font-size: .96rem;
+      line-height: 1.6;
+    }
+
+    .field { margin-bottom: 19px; }
+    label {
+      display: block;
+      margin-bottom: 8px;
+      color: #1e416c;
+      font-size: .88rem;
+      font-weight: 850;
+    }
+    .required { color: #e56c9c; }
+    .input-wrap { position: relative; }
+    input {
+      width: 100%;
+      min-height: 54px;
+      padding: 13px 15px;
+      border: 1.5px solid #c8e0ee;
+      border-radius: 14px;
+      outline: none;
+      color: #15365d;
+      background: #f7fcff;
+      font: inherit;
+      font-size: .98rem;
+      transition: border-color .2s, box-shadow .2s, background .2s;
+    }
+    input::placeholder { color: #9ab1c3; }
+    input:focus {
+      border-color: #239ad0;
+      background: #fff;
+      box-shadow: 0 0 0 4px rgba(35, 154, 208, .13);
+    }
+    input[type="number"] { appearance: textfield; }
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button { opacity: 1; }
+    .hint {
+      margin: 7px 0 0;
+      color: #8298aa;
+      font-size: .77rem;
+      line-height: 1.45;
+    }
+
+    .companions-box {
+      padding: 15px;
+      border: 1px solid #cce9f4;
+      border-radius: 16px;
+      background: linear-gradient(120deg, #f0fbff, #f7fbff);
+    }
+    .companions-box .field { margin: 0; }
+    .companions-box input { background: white; }
+    .total {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-top: 13px;
+      padding-top: 12px;
+      border-top: 1px dashed #b8d9e8;
+      color: #52748e;
+      font-size: .84rem;
+      font-weight: 750;
+    }
+    .total strong {
+      color: #117db4;
+      font-size: 1.1rem;
+    }
+
+    .submit-btn {
+      width: 100%;
+      min-height: 58px;
+      margin-top: 25px;
+      padding: 14px 18px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      border: 0;
+      border-radius: 16px;
+      color: #0c3457;
+      background: linear-gradient(100deg, #ffe985, #ffd76c);
+      box-shadow: 0 9px 0 #e8b84e, 0 14px 22px rgba(32, 91, 127, .13);
+      font: inherit;
+      font-size: .98rem;
+      font-weight: 950;
+      cursor: pointer;
+      transition: transform .16s, box-shadow .16s, filter .16s;
+    }
+    .submit-btn:hover { filter: brightness(1.035); transform: translateY(-2px); box-shadow: 0 11px 0 #e8b84e, 0 17px 25px rgba(32, 91, 127, .16); }
+    .submit-btn:active { transform: translateY(5px); box-shadow: 0 4px 0 #e8b84e; }
+    .submit-btn:focus-visible { outline: 4px solid rgba(35,154,208,.35); outline-offset: 4px; }
+    .whatsapp-icon { font-size: 1.25rem; }
+
+    .privacy {
+      margin: 17px 0 0;
+      color: #8298aa;
+      font-size: .74rem;
+      line-height: 1.5;
+      text-align: center;
+    }
+    .fallback {
+      margin: 13px 0 0;
+      padding: 12px;
+      border-radius: 12px;
+      color: #27516e;
+      background: #e6f7ff;
+      font-size: .82rem;
+      line-height: 1.5;
+      text-align: center;
+    }
+    .fallback a { color: #087eae; font-weight: 850; }
+    [hidden] { display: none !important; }
+
+    .bottom-flair {
+      display: flex;
+      justify-content: center;
+      gap: 13px;
+      margin-top: 17px;
+      color: rgba(235,250,255,.8);
+      font-size: .8rem;
+      font-weight: 700;
+      letter-spacing: .04em;
+    }
+
+    @keyframes bob {
+      0%, 100% { transform: translateY(0) rotate(-1deg); }
+      50% { transform: translateY(-9px) rotate(1deg); }
+    }
+
+    @media (max-width: 760px) {
+      body { padding: 18px 12px 24px; }
+      .invite { grid-template-columns: 1fr; border-radius: 24px; }
+      .hero { min-height: auto; padding: 32px 24px 25px; }
+      .hero h1 { font-size: clamp(3.5rem, 15vw, 5rem); }
+      .mascot-wrap { transform: scale(.88); margin: 4px auto -2px; height: 205px; }
+      .hero-subtitle { margin-top: 11px; }
+      .hero-foot { margin-top: 6px; }
+      .form-side { padding: 34px 24px 30px; }
+      .intro { margin-bottom: 23px; }
+    }
+    @media (max-width: 380px) {
+      .hero { padding-inline: 17px; }
+      .form-side { padding-inline: 19px; }
+      .mascot-wrap { transform: scale(.8); margin-block: -6px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <p class="top-note">🌺 Você foi convidado! 🌺</p>
+
+    <section class="invite" aria-label="Confirmação de presença do aniversário da Natally">
+      <div class="hero">
+        <div>
+          <p class="hero-kicker">Uma aventura muito especial</p>
+          <h1>Natally<span>10 anos!</span></h1>
+          <p class="hero-subtitle">Prepare-se para um aniversário cheio de alegria, diversão e uma dose de fofura extraterrestre!</p>
+        </div>
+
+        <div class="mascot-wrap" aria-hidden="true">
+          <div class="mascot-shadow"></div>
+          <div class="ear left"></div>
+          <div class="ear right"></div>
+          <div class="alien-head">
+            <span class="eye left"></span>
+            <span class="eye right"></span>
+            <span class="nose"></span>
+            <span class="smile"></span>
+            <span class="cheek left"></span>
+            <span class="cheek right"></span>
+          </div>
+        </div>
+
+        <div>
+          <p class="ohana">OHANA QUER DIZER FAMÍLIA 💙</p>
+          <p class="hero-foot">E família é estar juntinho nos momentos especiais!</p>
+        </div>
+      </div>
+
+      <div class="form-side">
+        <p class="form-label-top">Confirmação de presença</p>
+        <h2>Você vem<br>comemorar?</h2>
+        <p class="intro">Que alegria ter você com a gente! Preencha os dados abaixo para confirmar sua presença no aniversário de 10 anos da Natally.</p>
+
+        <form id="rsvpForm">
+          <div class="field">
+            <label for="guestName">Nome do participante <span class="required">*</span></label>
+            <input id="guestName" name="guestName" type="text" placeholder="Digite seu nome completo" autocomplete="name" maxlength="90" required />
+          </div>
+
+          <div class="field">
+            <label for="inviteCode">Código do convite <span class="required">*</span></label>
+            <input id="inviteCode" name="inviteCode" type="text" placeholder="Ex.: NATALLY10" maxlength="40" required />
+            <p class="hint">Digite o código que aparece no seu convite.</p>
+          </div>
+
+          <div class="companions-box">
+            <div class="field">
+              <label for="companions">Quantidade de acompanhantes</label>
+              <input id="companions" name="companions" type="number" inputmode="numeric" min="0" step="1" value="0" />
+              <p class="hint">Informe quantas pessoas irão com você, sem contar o participante principal.</p>
+            </div>
+            <div class="total" aria-live="polite">
+              <span>Total de pessoas na confirmação</span>
+              <strong id="totalPeople">1 pessoa</strong>
+            </div>
+          </div>
+
+          <button class="submit-btn" type="submit">
+            <span class="whatsapp-icon" aria-hidden="true">💬</span>
+            Confirmar pelo WhatsApp
+            <span aria-hidden="true">➜</span>
+          </button>
+
+          <p class="privacy">Ao clicar, o WhatsApp será aberto com sua mensagem pronta para enviar. Seus dados não ficam salvos neste site.</p>
+          <p id="fallback" class="fallback" role="status" hidden>Não abriu automaticamente? <a id="manualLink" href="#" target="_blank" rel="noopener noreferrer">Clique aqui para continuar no WhatsApp</a>.</p>
+        </form>
+      </div>
+    </section>
+
+    <div class="bottom-flair" aria-hidden="true">
+      <span>⭐ Diversão</span><span>🌴</span><span>Amizade</span><span>🌺</span><span>Boas lembranças ⭐</span>
+    </div>
+  </main>
+
+  <script>
+    // Número de WhatsApp no formato internacional: 55 + DDD + número.
+    const WHATSAPP_NUMBER = "5538998617565";
+
+    const form = document.getElementById("rsvpForm");
+    const nameInput = document.getElementById("guestName");
+    const codeInput = document.getElementById("inviteCode");
+    const companionsInput = document.getElementById("companions");
+    const totalPeople = document.getElementById("totalPeople");
+    const fallback = document.getElementById("fallback");
+    const manualLink = document.getElementById("manualLink");
+
+    function getCompanions() {
+      const value = Number.parseInt(companionsInput.value, 10);
+      return Number.isFinite(value) && value >= 0 ? value : 0;
+    }
+
+    function updateTotal() {
+      const total = 1 + getCompanions();
+      totalPeople.textContent = `${total} ${total === 1 ? "pessoa" : "pessoas"}`;
+    }
+
+    companionsInput.addEventListener("input", updateTotal);
+    companionsInput.addEventListener("blur", () => {
+      if (companionsInput.value === "" || getCompanions() < 0) companionsInput.value = "0";
+      updateTotal();
+    });
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      if (!form.reportValidity()) return;
+
+      const name = nameInput.value.trim();
+      const code = codeInput.value.trim();
+      const companions = getCompanions();
+      const total = companions + 1;
+
+      if (!name || !code) return;
+      if (!Number.isInteger(Number(companionsInput.value)) || Number(companionsInput.value) < 0) {
+        companionsInput.setCustomValidity("Informe um número inteiro igual ou maior que zero.");
+        companionsInput.reportValidity();
+        companionsInput.addEventListener("input", () => companionsInput.setCustomValidity(""), { once: true });
+        return;
+      }
+
+      const message = [
+        "Olá! Quero confirmar minha presença no aniversário de 10 anos da Natally! 🎉💙",
+        "",
+        `👤 Participante: ${name}`,
+        `🎟️ Código do convite: ${code}`,
+        `👥 Acompanhantes: ${companions}`,
+        `✨ Total de pessoas: ${total}`,
+        "",
+        "Até a comemoração! 🌺"
+      ].join("\n");
+
+      const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+      manualLink.href = whatsappUrl;
+      fallback.hidden = false;
+
+      // A abertura acontece diretamente após o clique do usuário.
+      const whatsappWindow = window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+      if (whatsappWindow) whatsappWindow.opener = null;
+    });
+
+    updateTotal();
+  </script>
+</body>
+</html>
